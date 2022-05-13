@@ -1,0 +1,33 @@
+.card-container {
+  padding: 20px;
+  margin: 10px;
+  width: 270px;
+}
+
+.card-language {
+    margin-bottom: 13px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card {
+  border: solid grey 2px;
+  border-radius: 5px;
+  height: 130px;
+}
+
+.card-country {
+    display: flex;
+    padding: 10px;
+}
+
+.card-title {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+.card-data {
+    padding-left: 15px;
+    color: grey;
+}
