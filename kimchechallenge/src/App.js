@@ -1,22 +1,37 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { Switcher } from "./components/Switcher/Switcher";
+import { Countries } from "./components/Countries/Countries";
+import { SearchBar } from "./components/SearchBar/SearchBar";
+import { ALL_COUNTRIES } from "./GraphQL/GraphQL";
 import "./App.css";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "@apollo/react-hooks";
 
-const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io",
-});
+function App() {
+  const { data, loading, error } = useQuery(ALL_COUNTRIES);
+  const [groupBy, setGroupBy] = React.useState("continents");
+  const [input, setInput] = React.useState();
 
-const App = () => (
-  <ApolloProvider client={client}>
-    <div>
-      <h2>
-        My first Apollo app{" "}
-        <span role="img" aria-label="Rocket">
-          🚀
-        </span>
-      </h2>
-    </div>
-  </ApolloProvider>
-);
+  if (error) return <span style={{ color: "red" }}>{error}</span>;
+  return (
+    <>
+      <div className="app-container">
+        <h1>Country Search</h1>
+        <SearchBar input={input} setInput={setInput} />
+        <Switcher groupBy={groupBy} setGroupBy={setGroupBy} />
+        <div>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <Countries
+              countries={data.countries}
+              input={input}
+              groupBy={groupBy}
+            />
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default App;
