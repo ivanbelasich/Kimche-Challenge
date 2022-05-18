@@ -1,0 +1,18 @@
+.searchbar-container {
+  text-align: start;
+}
+
+.searchbar-input {
+  width: 400px;
+  border: none;
+  height: 18px;
+  padding: 8px;
+  box-shadow: 3px 3px 3px 0px #7b7b7b;
+  border-radius: 3px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 96px;
+  left: 586px;
+}
